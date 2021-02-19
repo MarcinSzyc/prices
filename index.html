@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prices view</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <img class="background" src="./static/07-satagro-tlo.jpg" alt="background">
+    <div class="top-bar">
+        <img src="./static/logo.png" alt="logo">
+        <nav class="top-bar__navigation">
+            <div class="top-bar__current">Polski</div>
+            <ul class="top-bar__languages">
+                <li class="top-bar__link" data-region="PL">Polski</li>
+                <li class="top-bar__link" data-region="CZ">Čeština</li>
+                <li class="top-bar__link" data-region="LT">Lietuvių</li>
+                <li class="top-bar__link" data-region="SK">Slovenčina</li> 
+            </ul>
+        </nav>
+    </div>
+    
+        <script id="entry-template" type="text/x-handlebars-template">
+            <div class="price-plan">
+                {{#each output}}
+                    <div class="price-plan__element">
+                        <div class="price-plan__title">{{plan.name}}</div>
+                        <div class="price-plan__rate">{{yearly_rate}} {{currency_symbol}}</div>
+                        <div class="price-plan__description">{{description}}</div>
+                        <div class="price-plan__link">buy now</div>
+                    </div>
+                {{/each}}
+            </div>
+        </script>
+</body>
+</html>

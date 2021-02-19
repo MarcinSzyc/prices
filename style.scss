@@ -1,0 +1,115 @@
+$sat-agro: #263340;
+$sat-agro-white: rgba(255, 255, 255, 0.95);
+$sat-agro-green: #a4bd8e;
+$sat-agro-green-darker:#719155;
+
+body {
+    margin: 0;
+    position: relative;
+    font-family: "Lato", "PT Sans Narrow", "Raleway", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    color: $sat-agro;
+    font-size: 16px;
+}
+
+.background {
+    opacity: 0.5;
+    position: absolute;
+    z-index: -1;
+    min-width: 100%
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2em;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+
+    &__navigation {
+        display: flex;
+    }
+
+    &__current {
+        margin: auto;
+        padding: 0 1em;
+        text-transform: uppercase;
+        font-size: 1.1em;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__languages {
+        display: none;
+        list-style-type: none;
+        margin: 0;
+        padding: 1.2em;
+        background: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 2;
+    }
+
+    &__link {
+        padding: .5em 0;
+        text-transform: uppercase;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.price-plan {
+    $c: &;
+
+    margin: 18px;
+
+    &__element {
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: $sat-agro-white;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+        transform: scale(1);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        transition: all .3s;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+
+            #{$c}__link {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    &__title {
+        padding: 1em 2em;
+        font-size: 2em;
+    }
+
+    &__rate {
+        padding: 1em 2em;
+        font-size: 3em;
+    }
+
+    &__link {
+        padding: .5em;
+        background-color: $sat-agro-green;
+        border: 1px solid $sat-agro-green-darker;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transform: scale(1);
+        transition: all .6s;
+    }
+}

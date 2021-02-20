@@ -5,10 +5,10 @@ const selectors = {
 }
 
 const langaugeMapping = {
-    'PL' : 'Polski',
-    'CZ' : 'Čeština',
-    'LT' : 'Lietuvių',
-    'SK' : 'Slovenčina'
+    'PL' : {language: 'Polski', prefix: 'ha/rok'},
+    'CZ' : {language: 'Čeština', prefix: 'ha/rok'},
+    'LT' : {language: 'Lietuvių', prefix: 'ha/year'},
+    'SK' : {langauge: 'Slovenčina', prefix: 'ha/year'}
 }
 
 function fetchData(region) {
@@ -29,14 +29,14 @@ function fetchData(region) {
         return data.json();
     })
     .then(response => {
-        let data = response;
         let source = document.getElementById("entry-template").innerHTML;
         let template = Handlebars.compile(source);
-        let output = data.filter(element => {
-            var test = element;
+        let output = response.filter(element => {
+            element['prefix'] = langaugeMapping[region].prefix;
             return element.yearly_rate !== 0;
         });
         var html = template({output});
+        $('.price-plan').remove();
         $('body').append(html);
     })
 }
@@ -50,7 +50,7 @@ function assignListeners() {
     $(selectors.languageTrigger).click(function () {
         let $chosenLanguage = $(this).data('region');
         let $mainLanugageElement = $(selectors.mainLanguageTrigger);
-        let mappedLanguageValue = langaugeMapping[$chosenLanguage];
+        let mappedLanguageValue = langaugeMapping[$chosenLanguage].language;
         
         $mainLanugageElement.text(mappedLanguageValue);
         $(selectors.languageChoiceBody).slideToggle()

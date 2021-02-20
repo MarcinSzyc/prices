@@ -24,18 +24,18 @@
             </ul>
         </nav>
     </div>
-    
-        <script id="entry-template" type="text/x-handlebars-template">
-            <div class="price-plan">
-                {{#each output}}
-                    <div class="price-plan__element">
-                        <div class="price-plan__title">{{plan.name}}</div>
-                        <div class="price-plan__rate">{{yearly_rate}} {{currency_symbol}}</div>
-                        <div class="price-plan__description">{{description}}</div>
-                        <div class="price-plan__link">buy now</div>
-                    </div>
-                {{/each}}
-            </div>
-        </script>
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="price-plan">
+            {{#each output}}
+                <div class="price-plan__element">
+                    <div class="price-plan__title">{{plan.name}}</div>
+                    <div class="price-plan__rate">{{yearly_rate}} {{currency_symbol}} <span>{{prefix}}</span></div>
+                    <div class="price-plan__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    <div class="price-plan__link">buy now</div>
+                </div>
+            {{/each}}
+        </div>
+    </script>
 </body>
 </html>
